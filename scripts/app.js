@@ -1,7 +1,8 @@
 var myApp = angular.module("myApp", [
     'ngAnimate',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngMessages'
 ]);
 
 myApp.config(function($routeProvider){
