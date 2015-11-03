@@ -29,6 +29,7 @@ myApp.controller('login', ['$scope', '$log', '$http', 'myConfig', 'sessionServic
             sessionStorage.setItem('id', id);
 
             sessionService.isLoggedIn = sessionService.isUserAuthorized();
+            
             $location.path('/users/'+id);
             $log.info(id + " this is the id")
 

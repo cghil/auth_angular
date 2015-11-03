@@ -31,8 +31,10 @@ myApp.service('sessionService', ['$log', '$http', 'myConfig', function($log, $ht
 		})
 	};
 
-	this.currentUser = function(){
-
+	this.shouldUserBeRerouted = function(){
+		if(!isUserAuthorized()){
+			$location.path('/')
+		}
 	};
 
 }]);
