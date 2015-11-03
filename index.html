@@ -22,10 +22,11 @@
                     <a class="navbar-brand" href="#/">Auth System</a>
                 </div>
                 <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="navController">
-                    <ul class="nav navbar-nav">
+                   	<ul class="nav navbar-nav">
                         <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
-                        <li ng-class="{active: isActive('/login')}"><a ng-href="#/login">Log In</a></li>
-                        <li ng-show=""> <a>Sign Out</a></li>
+                        <li ng-class="{active: isActive('#/about')"><a href="#/about"></a></li>
+                        <li ng-hide="isLoggedIn" ng-class="{active: isActive('/login')}"><a ng-href="#/login">Log In</a></li>
+                        <li ng-show="isLoggedIn" ng-click="logOut()"> <a ng-href="#/">Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +49,8 @@
     <script src="scripts/controllers/nav.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/sessionservice.js"></script>
+    <script src="scripts/services/sessionservice.js"></script>
+    <script src="scripts/services/flashservice.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </body>
