@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{ email }}</h3>
+		</div>
+		<div class="panel-body">
+			<p>Hi, there user #{{user.id}}</p>
+		</div>
+	</div>
+	<button ng-click="showEdit()" class="btn btn-success">Edit</button>
+	<br>
+	<br ng-hide="editFormStatus">
+	<div ng-show="editFormStatus">
+		<form name="editUserForm" ng-submit="submit()">
+			<h3 class="text-center">Edit Information</h3>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input name="email" placeholder="Email" class="form-control" ng-model="user.email" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input name="password" type="password" class="form-control" placeholder="New Passsword" ng-model="user.password" required>
+			</div>
+			<div class="form-group">
+				<label for="passwordConfirmation">Confirm Password</label>
+				<input name="passwordConfirmation" type="password" class="form-control" placeholder="Confirm New Password" ng-model="user.passwordConfirmation" required>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Submit" id="submit" class="btn btn-default">
+			</div>
+		</form>
+		<div class="panel panel-danger" ng-show="showReqs">
+			<div class="panel-heading">
+				<h3 class="panel-title">Form Errors</h3>
+			</div>
+			<div class="panel-body">
+				<ul>
+					<li ng-repeat="req in reqs">{{ req }}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -2,26 +2,36 @@
     <span class="glyphicon glyphicon-exclamation-sign"></span>
     <span class="sr-only">Error: </span> {{errors}}
 </div>
-<form name="loginForm" ng-submit="submit()" required>
 
-    <div class="form-group">
-        <label for="email">Email Address</label>
-        <input name="email" type="email" class="form-control" placeholder="Email" ng-model="email" required>
-        <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$dirty">
-            <div ng-message="required">Email is required</div>
-            <div ng-message="email">Your email address invalid</div>
-        </div>
-    </div>
+<div class="container">
+	<div class="signin">
+		<h2 class="text-center">Sign In</h2>
+		<div class="text-center">
+			<button class="btn btn-success text-center" ng-click="switchForm()">Sign Up</button>
+		</div>
+		<form name="loginForm" ng-submit="submit()" required>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input ng-minlength="8" name="password" type="password" class="form-control" placeholder="Password" ng-model="password" required>
-        <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
-        	<div ng-message="required">Password is required</div>
-        	<div ng-message="minlength">This password must be over 7 characters</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <input type="submit" id="submit" value="Submit" class="btn btn-default" required>
-    </div>
-</form>
+		    <div class="form-group">
+		        <label for="email">Email Address</label>
+		        <input name="email" type="email" class="form-control" placeholder="Email" ng-model="email" required>
+		        <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$dirty">
+		            <div ng-message="required">Email is required</div>
+		            <div ng-message="email">Your email address invalid</div>
+		        </div>
+		    </div>
+
+		    <div class="form-group">
+		        <label for="password">Password</label>
+		        <input ng-minlength="8" name="password" type="password" class="form-control" placeholder="Password" ng-model="password" required>
+		        <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
+		        	<div ng-message="required">Password is required</div>
+		        	<div ng-message="minlength">This password must be over 7 characters</div>
+		        </div>
+		    </div>
+		    <div class="form-group">
+		        <input type="submit" id="submit" value="Submit" class="btn btn-default" required>
+		    </div>
+		</form>
+	</div>
+	<br>
+</div>

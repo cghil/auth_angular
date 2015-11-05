@@ -1,8 +1,12 @@
-myApp.controller('login', ['$scope', '$log', '$http', function($scope, $log, $http) {
+myApp.controller('login', ['$scope', '$log', '$http', 'myConfig', 'sessionService', '$location', function($scope, $log, $http, myConfig, sessionService, $location) {
 
     $scope.email = '';
     $scope.password = '';
     $scope.messages = false;
+
+    $scope.switchForm = function(){
+        $location.path('/signup')
+    };
 
     $scope.submit = function() {
 
@@ -13,7 +17,7 @@ myApp.controller('login', ['$scope', '$log', '$http', function($scope, $log, $ht
 
         $http({
             method: 'POST',
-            url: 'http://localhost:3000/api/v1/sessions',
+            url: myConfig.backend + '/api/v1/sessions',
             data: user,
             headers: { 'Content-Type': 'application/json' }
         }).then(function(response) {
@@ -28,6 +32,10 @@ myApp.controller('login', ['$scope', '$log', '$http', function($scope, $log, $ht
             sessionStorage.setItem('email', email);
             sessionStorage.setItem('id', id);
 
+            sessionService.isLoggedIn = sessionService.isUserAuthorized();
+
+            $location.path('/users/'+id);
+
         }, function(response) {
 
             $scope.messages = true;
@@ -35,7 +43,7 @@ myApp.controller('login', ['$scope', '$log', '$http', function($scope, $log, $ht
             if (response.status === 500) {
                 $scope.errors = response.statusText;
             } else {
-                $scope.errors = response.data.errors
+                $scope.errors = response.data.errors || 'Internal Error';
             }
         })
     };
