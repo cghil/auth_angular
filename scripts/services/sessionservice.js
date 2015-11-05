@@ -1,4 +1,4 @@
-myApp.service('sessionService', ['$log', '$http', 'myConfig', function($log, $http, myConfig){
+myApp.service('sessionService', ['$log', '$http', 'myConfig', '$location', function($log, $http, myConfig, $location){
 
 	this.isUserAuthorized = function(){
 		if(sessionStorage.auth === undefined){
@@ -32,7 +32,7 @@ myApp.service('sessionService', ['$log', '$http', 'myConfig', function($log, $ht
 	};
 
 	this.shouldUserBeRerouted = function(){
-		if(!isUserAuthorized()){
+		if(!this.isUserAuthorized()){
 			$location.path('/')
 		}
 	};

@@ -1,0 +1,38 @@
+<div class="alert alert-danger" role="alert" ng-if="errors!==null && errors!==undefined">
+	<span class="glyphicon glyphicon-exclamation-sign"></span>
+	<span class="sr-only">Error: </span> {{errors}}
+</div>
+<div class="container">
+	<div class="signup">
+		<h2 class="text-center">Sign Up</h2>
+	</div>
+	<form name="signUpForm" ng-submit="submit()" required>
+		<div class="form-group">
+			<label for="email">Email Address</label>
+			<input name="email" type="email" class="form-control" placeholder="Email" ng-model="email" required>
+			<div ng-messages="signUpForm.email.$error" ng-if="signUpForm.email.$dirty">
+				<div ng-message="required">Email is required</div>
+				<div ng-message="email">Your email address invalid</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input ng-minlength="8" name="password" type="password" class="form-control" placeholder="Password" ng-model="password" required>
+			<div ng-messages="signUpForm.password.$error" ng-if="signUpForm.password.$dirty">
+				<div ng-message="required">Password is required</div>
+				<div ng-message="minlength">Password must be at least 8 characters</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="passwordConfirmation">Password Confirmation</label>
+			<input ng-minlength="8" name="passwordConfirmation" type="password" class="form-control" placeholder="Password Confirmation" ng-model="passwordConfirmation" required>
+			<div ng-messages="signUpForm.passwordConfirmation.$error" ng-if="signUpForm.passwordConfirmation.$dirty">
+				<div ng-message="required">Password confirmation is required</div>
+				<div ng-message="minlength">Confirmation must be at least 8 characters</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<input type="submit" id="submit" value="Submit" class="btn btn-default" required>
+		</div>
+	</form>
+</div>

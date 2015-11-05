@@ -4,6 +4,10 @@ myApp.controller('login', ['$scope', '$log', '$http', 'myConfig', 'sessionServic
     $scope.password = '';
     $scope.messages = false;
 
+    $scope.switchForm = function(){
+        $location.path('/signup')
+    };
+
     $scope.submit = function() {
 
         var user = {
@@ -29,9 +33,8 @@ myApp.controller('login', ['$scope', '$log', '$http', 'myConfig', 'sessionServic
             sessionStorage.setItem('id', id);
 
             sessionService.isLoggedIn = sessionService.isUserAuthorized();
-            
+
             $location.path('/users/'+id);
-            $log.info(id + " this is the id")
 
         }, function(response) {
 

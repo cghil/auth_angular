@@ -24,8 +24,9 @@
                 <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="navController">
                    	<ul class="nav navbar-nav">
                         <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
-                        <li ng-class="{active: isActive('#/about')}"><a href="#/about">About</a></li>
-                        <li ng-hide="isLoggedIn" ng-class="{active: isActive('/login')}"><a ng-href="#/login">Log In</a></li>
+                        <li ng-class="{active: isActive('/#/about')}"><a href="#/about">About</a></li>
+                        <li ng-class="{active: isActive('/#/users'+sessionStorage.id)}" ng-show="isLoggedIn"><a ng-href="#/users/{{user.id}}">Profile</a></li>
+                        <li ng-class="{active: isActive('/#/login')}" ng-hide="isLoggedIn"><a ng-href="#/login">Log In</a></li>
                         <li ng-show="isLoggedIn" ng-click="logOut()"> <a ng-href="#/">Sign Out</a></li>
                     </ul>
                 </div>
@@ -50,6 +51,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/signup.js"></script>
     <script src="scripts/controllers/user.js"></script>
     <script src="scripts/services/sessionservice.js"></script>
     <script src="scripts/services/flashservice.js"></script>
